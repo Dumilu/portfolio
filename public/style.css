@@ -142,6 +142,12 @@ INPUT[type="radio"].visually-hidden,
   }
 }
 
+@media (max-width: 768px) {
+  .header__menu {
+    width: 140px;
+  }
+}
+
 .header__menu-item a {
   text-decoration: none;
   color: black;
@@ -1329,6 +1335,17 @@ span.swiper-pagination-bullet-active {
     text-align: center;
     color: #ffffff;
     background-color: #ff4e2e;
+    transition: 0.2s;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__socials-button:hover,
+  .footer__socials-button:active,
+  .footer__socials-button:focus {
+    background-color: #ec2300;
+    color: #FFFFFF;
+    box-shadow: none;
     transition: 0.2s;
   }
 }
