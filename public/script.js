@@ -10,7 +10,7 @@ if (window.mobilecheck()) {
 };
 
 function windowSize() {
-  if ($(window).width() <= '1024'){
+  if (window.innerWidth <= '1024'){
       $('.header__menu').addClass("visually-hidden");
   } else {
     $('.header__menu').removeClass("visually-hidden");
@@ -53,15 +53,38 @@ var swiper = new Swiper('.swiper-container', {
   },
 });
 
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
+$('#exampleModal').on('shown.bs.modal', function () {
+  $('#exampleInputEmail1').trigger('focus')
+});
+
+$("#exampleModal").on('hidden.bs.modal', function(){
+  $('#form').trigger("reset");
+  $("#form_result").empty();
 });
 
 $(document).ready(function(){
-  $('a[href^="#"], *[data-href^="#"]').on('click', function(e){
+  $('.header__menu a[href^="#"], .footer__menu a[href^="#"]').on('click', function(e){
       e.preventDefault();
       var t = 1000;
       var d = $(this).attr('data-href') ? $(this).attr('data-href') : $(this).attr('href');
       $('html,body').stop().animate({ scrollTop: $(d).offset().top }, t);
   });
+});
+
+$("#form").submit(function(event) {
+  var name = $('input[name=fio]').val();
+  var tel = $('input[name=tel]').val();
+  var email = $('input[name=email]').val();
+  var data = {'name':name, 'tel':tel, 'email':email};
+
+  $.post('send.php', data, function(res){
+    var result = '<div style="color:#D80018;">'+res.text+'</div>';
+    $("#form_result").hide().html(result).slideDown();
+  }, 'json')
+  .fail(function(error) {
+    var result = '<div style="color:#D80018;">Что-то пошло не так...</div>';
+    $("#form_result").hide().html(result).slideDown();
+  });
+
+  event.preventDefault();
 });

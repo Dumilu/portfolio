@@ -101,6 +101,10 @@ INPUT[type="radio"].visually-hidden,
   display: none;
 }
 
+.header__burger:focus {
+  outline: hotpink;
+}
+
 @media (max-width: 1024px) {
   .header__burger {
     position: relative;
@@ -139,6 +143,7 @@ INPUT[type="radio"].visually-hidden,
     background: #fbfbfb;
     transition: all 0.2s;
     z-index: 20;
+    overflow: hidden;
   }
 }
 
@@ -151,6 +156,7 @@ INPUT[type="radio"].visually-hidden,
 .header__menu-item a {
   text-decoration: none;
   color: black;
+  border-bottom: 1px solid transparent;
 }
 
 @media (max-width: 1024px) {
@@ -163,7 +169,7 @@ INPUT[type="radio"].visually-hidden,
 
 .header__menu-item a:hover {
   color: #fc557c;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #fc557c;
   transition: 0.2s;
 }
 
@@ -312,9 +318,9 @@ INPUT[type="radio"].visually-hidden,
   position: absolute;
   font-size: 38px;
   background: linear-gradient(45deg, #ff2f96, #f35b2e);
+  background: -webkit-linear-gradient(45deg, #ff2f96, #f35b2e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: table;
 }
 
 @media (max-width: 768px) {
@@ -718,7 +724,7 @@ INPUT[type="radio"].visually-hidden,
   .preview__image {
     order: 2;
     width: calc(100% + 40px);
-    height: 420px;
+    min-height: 360px;
   }
 }
 
@@ -737,7 +743,6 @@ INPUT[type="radio"].visually-hidden,
 
 @media (max-width: 768px) {
   .preview__avatar {
-    position: relative;
     max-height: 400px;
     left: calc(100% / 4);
   }
@@ -1007,6 +1012,10 @@ INPUT[type="radio"].visually-hidden,
   transition: 0.2s;
 }
 
+.gallery__slider:focus {
+  outline: 1px dotted;
+}
+
 @media (max-width: 1024px) {
   .gallery__slider {
     display: none;
@@ -1222,6 +1231,7 @@ span.swiper-pagination-bullet-active {
 @media (max-width: 768px) {
   .footer__menu {
     margin-bottom: 25px;
+    margin-right: 25px;
   }
 }
 
@@ -1255,6 +1265,7 @@ span.swiper-pagination-bullet-active {
 }
 
 .footer__contacts {
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -1310,6 +1321,12 @@ span.swiper-pagination-bullet-active {
     padding-left: 0;
     padding-right: 5px;
     background-size: cover;
+  }
+}
+
+@media(max-width: 768px) {
+  .footer__socials {
+    margin: 0 auto;
   }
 }
 
@@ -1416,4 +1433,13 @@ span.swiper-pagination-bullet-active {
 .btn-accent {
   background-color: #f35b2e;
   border: #f35b2e;
+}
+
+.btn-accent:hover,
+.btn-accent:focus {
+  background-color: #ec2300;
+}
+
+input.btn-accent:active {
+  background-color: #b0062d;
 }
